@@ -9,6 +9,7 @@ body {
     background-color: #f9faf2;
     color: #333;
     line-height: 1.6;
+    
 }
 .header {
     background-color: #04ef3e;
@@ -28,7 +29,7 @@ header h1 {
    text-align: center;
    color: #011501;
    font-size: clamp(1.5rem, 4vw, 3rem);
-   font-weight: 400;
+   font-weight: 10000;
    font-family: "Great Vibes", "cursive";
    font-style: italic;
    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);

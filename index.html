@@ -11,7 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/game.css">
     <link rel="stylesheet" href="css/main.css">
+
 
     <script type="module" src="js/main.js"></script>
     
@@ -25,29 +27,41 @@
         </a>
     </header>
     
-
     <nav id="sideMenu" class="side-menu">
             <button id="closeButton">&times;</button>
             <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="#">Boutique</a></li>
-                <li><a href="#">Paramètres</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Settings</a></li>
             </ul>
     </nav>
     <div id="overlay" class="overlay"></div>
 
 
     <main>
-        <button id="pizzaButton"><img src="assets/images/PizzaGame.png" alt="Pizza"></button>
+        <section class="game">
+            <canvas
+                id="pizzaButton"
+                width="500"
+                height="500">
+            </canvas>
+            <div class="stats">
+                <p>Pizzas<br>sold: <span id="pizzaCount">0</span></p>
+                <button id="cookButton">Cook</button>
+                <p>remaining<br>slices: <span id="sliceCount">8</span></p>
+            </div>
+        </section>
     </main>
 
+
+
     <footer class="footer">
-    <p>&copy; 2026 Pizza Clicker. Tous droits réservés.</p>
+    <p>&copy; 2026 Pizza Clicker. All rights reserved.</p>
 
     <nav>
-        <a href="#">À propos</a>
+        <a href="#">About</a>
         <span>|</span>
-        <a href="#">Mentions légales</a>
+        <a href="#">Legal Notices</a>
         <span>|</span>
         <a href="#">Contact</a>
     </nav>

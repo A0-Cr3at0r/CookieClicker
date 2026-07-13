@@ -1,0 +1,80 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+main .stats {
+    width: 70%;
+    margin-top: 1rem;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    align-items: center;
+}
+
+main .stats p {
+    margin: 2px;
+    font-size: 1rem;
+    font-weight: 1000;
+}
+
+
+main .stats p:first-child {
+    justify-self: start;
+    margin-left: 0rem;
+}
+
+main .stats p:last-child {
+    justify-self: end;
+    margin-right: 0rem;
+}
+
+main .stats button {
+    justify-self: center;
+
+    padding: 0.8rem 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    border: none;
+    border-radius: 10px;
+
+    background-color: #48539e;
+    color: white;
+
+    cursor: pointer;
+
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+main .stats button:hover {
+    background-color: #171b34;
+    transform: scale(1.05);
+}
+
+main .stats button:active {
+    transform: scale(0.95);
+}
+
+#pizzaButton{
+    width: 70%;
+    height: 50%;
+    margin-top: 1rem;
+}
+
+#pizzaButton img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+

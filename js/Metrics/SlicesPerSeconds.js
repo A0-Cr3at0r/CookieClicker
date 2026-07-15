@@ -1,3 +1,5 @@
+import {Metric} from "./Metric"
+
 export default class SlicesPerSeconds extends Metric {
 
     #elapsed = 0;

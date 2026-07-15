@@ -1,3 +1,5 @@
+import {Metric} from "./Metric"
+
 export default class PizzasPerSeconds extends Metric {
 
     #elapsed = 0;

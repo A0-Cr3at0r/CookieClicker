@@ -1,6 +1,6 @@
 const imageSrc = "assets/images/PizzaGameWithoutBG.png";
 
-export class UI {
+export class PizzaUI {
     #pizzaCountElement;
     #sliceCountElement;
 

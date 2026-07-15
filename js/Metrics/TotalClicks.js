@@ -1,3 +1,5 @@
+import {Metric} from "./Metric"
+
 export default class TotalClicks extends Metric {
 
     #total = 0;

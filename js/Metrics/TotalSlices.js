@@ -1,3 +1,5 @@
+import {Metric} from "./Metric"
+
 export default class TotalSlices extends Metric {
 
     #total = 0;

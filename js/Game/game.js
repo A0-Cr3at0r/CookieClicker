@@ -1,5 +1,5 @@
 import { Game } from "./GameClass.js";
-import {UI} from "../UI/UIClass.js";
+import {PizzaUI} from "../UI/PizzaUI.js";
 import { AudioManager } from "../Managers/AudioManager.js";
 
 const totalSlices = 8; // Total number of slices in the pizza
@@ -8,7 +8,7 @@ const initialPizzaCount = 0; // Initial number of pizzas
 const pizzaCanvas = document.getElementById("pizzaCanvas");
 
 const game = new Game(initialPizzaCount, totalSlices);
-const ui = new UI(pizzaCanvas);
+const ui = new PizzaUI(pizzaCanvas);
 const audioManager = new AudioManager();
 
 const pizzaButton = document.getElementById("pizzaCanvas");

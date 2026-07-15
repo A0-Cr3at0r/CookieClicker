@@ -1,26 +1,41 @@
 export default class MetricManager {
 
-    #metrics = [];
+    #metrics = new Map();
 
     addMetric(metric) {
-        this.#metrics.push(metric);
+        this.#metrics.set(metric.getName(), metric);
     }
 
-    update(dt) {
-        for (const metric of this.#metrics)
-            metric.update(dt);
+    update(deltaTime) {
+        for (const metric of this.#metrics.values()) {
+            metric.update(deltaTime);
+        }
     }
 
     recordClick() {
-        for(const metric of this.#metrics)
-            if(metric.recordClick)
-                metric.recordClick();
+        for (const metric of this.#metrics.values()) {
+            metric.recordClick();
+        }
     }
 
-    recordSlices() {
-        for(const metric of this.#metrics)
-            if(metric.record)
-                metric.recordClick();
+    recordSlice(amount = 1) {
+        for (const metric of this.#metrics.values()) {
+            metric.recordSlice(amount);
+        }
+    }
+
+    recordPizza(amount = 1) {
+        for (const metric of this.#metrics.values()) {
+            metric.recordPizza(amount);
+        }
+    }
+
+    getMetric(name) {
+        return this.#metrics.get(name);
+    }
+
+    getMetrics() {
+        return this.#metrics.values();
     }
 
 }

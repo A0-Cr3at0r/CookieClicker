@@ -1,6 +1,6 @@
 import { Game } from "./GameClass.js";
-import {UI} from "./UIClass.js";
-import { AudioManager } from "./AudioManager.js";
+import {UI} from "../UI/UIClass.js";
+import { AudioManager } from "../Managers/AudioManager.js";
 
 const totalSlices = 8; // Total number of slices in the pizza
 const initialPizzaCount = 0; // Initial number of pizzas

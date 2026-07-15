@@ -1,2 +1,2 @@
-import "./menu.js";
-import "./game.js";
+import "./UI/menu.js";
+import "./Game/game.js";

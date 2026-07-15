@@ -1,5 +1,5 @@
-import {ActiveBoost } from "./ActiveBoosts"
-import { BoostAction } from "../BoostActions";
+import ActiveBoost  from "./ActiveBoosts"
+import  BoostAction from "../BoostActions";
 
 export default class AutoClickerBoost extends ActiveBoost {
 

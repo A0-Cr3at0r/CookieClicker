@@ -7,7 +7,7 @@ export default class MetricUI {
         this.#elements.set("Total Slices", document.getElementById("totalSlices"));
         this.#elements.set("Clicks Per Second", document.getElementById("clicksPerSecond"));
         this.#elements.set("Slices Per Second", document.getElementById("slicesPerSecond"));
-        this.#elements.set("Pizzas Per Seconds", document.getElementById("pizzasPerSecond"));
+        this.#elements.set("Pizzas Per Second", document.getElementById("pizzasPerSecond"));
     }
 
     render(metricManager) {

@@ -1,24 +1,24 @@
-import {Metric} from "./Metric"
+import Metric from "./Metric.js";
 
-export default class PizzasPerSeconds extends Metric {
+export default class SlicesPerSecond extends Metric {
 
     #elapsed = 0;
-    #pizzas = 0;
+    #slices = 0;
     #value = 0;
-    #name = "Pizzas Per Seconds";
+    #name = "Slices Per Second";
 
-    recordPizza() {
-        this.#pizzas++;
+    recordSlice() {
+        this.#slices++;
     }
 
     update(dt) {
+
         this.#elapsed += dt;
 
         if (this.#elapsed >= 1) {
-            this.#value = this.#pizzas;
-            this.#pizzas = 0;
+            this.#value = this.#slices;
+            this.#slices = 0;
             this.#elapsed = 0;
-
         }
 
     }

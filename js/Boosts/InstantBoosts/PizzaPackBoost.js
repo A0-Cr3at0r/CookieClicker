@@ -1,4 +1,4 @@
-import {InstantBoost}  from "./InstantBoosts"
+import InstantBoost  from "./InstantBoosts"
 
 export default class PizzaPackBoost extends InstantBoost {
 

@@ -1,14 +1,14 @@
-import {Metric} from "./Metric"
+import Metric from "./Metric.js";
 
-export default class SlicesPerSeconds extends Metric {
+export default class ClicksPerSecond extends Metric {
 
     #elapsed = 0;
-    #slices = 0;
+    #clicks = 0;
     #value = 0;
-    #name = "Slices Per Seconds";
+    #name = "Clicks Per Second";
 
-    recordSlice() {
-        this.#slices++;
+    recordClick() {
+        this.#clicks++;
     }
 
     update(dt) {
@@ -16,9 +16,11 @@ export default class SlicesPerSeconds extends Metric {
         this.#elapsed += dt;
 
         if (this.#elapsed >= 1) {
-            this.#value = this.#slices;
-            this.#slices = 0;
+
+            this.#value = this.#clicks;
+            this.#clicks = 0;
             this.#elapsed = 0;
+
         }
 
     }

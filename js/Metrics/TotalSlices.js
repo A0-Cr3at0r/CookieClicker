@@ -1,11 +1,10 @@
-import {Metric} from "./Metric"
+import Metric from "./Metric.js";
 
 export default class TotalSlices extends Metric {
-
     #total = 0;
-    #name = "Total slices"
+    #name = "Total Slices"
 
-    recordSlices(amount) {
+    recordSlice(amount) {
         this.#total += amount;
     }
 

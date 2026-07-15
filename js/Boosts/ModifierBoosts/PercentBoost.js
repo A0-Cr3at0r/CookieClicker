@@ -1,4 +1,4 @@
-import {ModifierBoost} from "./ModifierBoost";
+import ModifierBoost from "./ModifierBoost";
 
 export default class PercentBoost extends ModifierBoost {
     #percent;

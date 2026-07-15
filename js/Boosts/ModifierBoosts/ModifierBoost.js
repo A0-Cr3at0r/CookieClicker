@@ -1,4 +1,4 @@
-import {Boost} from "../Boosts"
+import Boost from "../Boosts"
 
 export default class ModifierBoost extends Boost {
 

@@ -11,7 +11,7 @@ export default class PizzaPackBoost extends InstantBoost {
 
         boostActions.addPizzas(100);
         
-        return boostActions
+        return boostActions;
 
     }
 

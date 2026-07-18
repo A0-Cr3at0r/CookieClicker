@@ -1,7 +1,13 @@
 main {
+
     display: flex;
+
     justify-content: center;
-    align-items: center;
+
+    align-items: flex-start;
+
+    gap: 2rem;
+
 }
 
 .game {
@@ -21,7 +27,7 @@ main {
     flex-direction:column;
 
     width:340px;
-    height:450px;
+    height:520px;
 
     padding:1rem;
 
@@ -29,6 +35,8 @@ main {
     border-radius:20px;
 
     box-sizing:border-box;
+
+    margin-top: 2rem;
 
 }
 
@@ -318,27 +326,110 @@ main {
 ----------------------------------------------------- */
 
 .metrics {
+
+    height:510px;
+
+    box-sizing:border-box;
+
     background-color: #aeb6eb;
-    border-radius: 5%;
+
+    border-radius: 20px;
+
     display: flex;
     flex-direction: column;
+
+    gap: 0.35rem;
+
     margin: 3rem;
     margin-top: 2rem;
-    min-width: 200px;
+
+    min-width: 250px;
+
+    padding: 0.7rem;
+
+    color: #4a3728;
+
 }
+
+
 
 .metrics h2 {
-    margin-bottom: 10%;
-    margin-top: 5%;
+
+    text-align: center;
+
+    margin: 0.3rem 0 0.6rem;
+
+    font-size: 1.3rem;
+
 }
 
-.metrics h2, .metrics p  {
-    margin-left: 5%;
-    margin-right: 5%;
+
+
+.metrics h3 {
+
+    margin: 0.7rem 0 0.25rem;
+
+    font-size: 0.95rem;
+
+    color: #5c4635;
+
 }
 
-.metrics p:last-child {
-    margin-bottom: 15%;
+
+
+.metric-card {
+
+    background-color: #f5f0d8;
+
+    border-radius: 12px;
+
+    padding: 0.45rem 0.8rem;
+
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+
+.metric-card span {
+
+    font-weight: 600;
+
+    font-size: 0.9rem;
+
+}
+
+
+
+.metric-card strong {
+
+    font-size: 1rem;
+
+    font-weight: 800;
+
+}
+
+
+
+.metric-card.active {
+
+    background-color: #fee488;
+
+}
+
+
+
+.metric-card:hover {
+
+    transform: scale(1.02);
+
+    transition: transform 0.15s ease;
+
 }
 
 /* -----------------------------------------------------
@@ -346,12 +437,19 @@ main {
 ----------------------------------------------------- */
 
 main .stats {
-    width: 70%;
-    margin-top: 1rem;
-    text-align: center;
-    display: grid;
-    grid-template-columns: 1fr max-content 1fr;
-    align-items: center;
+
+    width:70%;
+
+    margin-top:0.5rem;
+
+    text-align:center;
+
+    display:grid;
+
+    grid-template-columns:1fr max-content 1fr;
+
+    align-items:center;
+
 }
 
 main .stats p {

@@ -36,8 +36,19 @@ export default class MetricUI {
             document.getElementById("pizzasPerSecond")
         );
 
-    }
 
+        this.#elements.set(
+            "Slice Multiplier",
+            document.getElementById("sliceMultiplier")
+        );
+
+
+        this.#elements.set(
+            "Money Multiplier",
+            document.getElementById("moneyMultiplier")
+        );
+
+    }
 
 
 
@@ -58,12 +69,57 @@ export default class MetricUI {
 
             if(element) {
 
-                element.textContent =
-                    value;
+
+                if(
+                    name.includes("Multiplier")
+                ) {
+
+                    element.textContent =
+                        "x" + value;
+
+                }
+
+                else {
+
+                    element.textContent =
+                        this.#formatNumber(value);
+
+                }
 
             }
 
         }
+
+    }
+
+
+
+
+    #formatNumber(value) {
+
+
+        if(value >= 1_000_000) {
+
+            return (
+                value / 1_000_000
+            ).toFixed(2) + "M";
+
+        }
+
+
+
+        if(value >= 1_000) {
+
+            return (
+                value / 1_000
+            ).toFixed(1) + "K";
+
+        }
+
+
+        return Number(value).toFixed(
+            value % 1 === 0 ? 0 : 1
+        );
 
     }
 

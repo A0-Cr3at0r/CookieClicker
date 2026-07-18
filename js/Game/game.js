@@ -36,6 +36,8 @@ import TotalSlices from "../Metrics/TotalSlices.js";
 import ClicksPerSecond from "../Metrics/ClicksPerSecond.js";
 import SlicesPerSecond from "../Metrics/SlicesPerSecond.js";
 import PizzasPerSecond from "../Metrics/PizzasPerSecond.js";
+import SliceMultiplier from "../Metrics/SlicesMultiplier.js";
+import MoneyMultiplier from "../Metrics/MoneyMultiplier.js";
 
 
 // Boosts
@@ -135,6 +137,14 @@ metricManager.addMetric(
 
 metricManager.addMetric(
     new PizzasPerSecond()
+);
+
+metricManager.addMetric(
+    new SliceMultiplier()
+);
+
+metricManager.addMetric(
+    new MoneyMultiplier()
 );
 
 //-----------------------------------------------------
@@ -253,7 +263,7 @@ function performClick() {
 
 
     const result =
-        clickManager.click();
+        clickManager.click(1);
 
 
     uiManager.consumeGameResult(
@@ -324,46 +334,24 @@ function gameLoop(currentTime) {
     );
 
 
-
     const actions =
         boostManager.update(
             deltaTime
         );
     
 
-    if(!actions.isEmpty()) {
-        const result =
-            clickManager.click(actions);
+    const result =
+        clickManager.click();
 
-            if (result.getMoneyEarned() === 5) {
-                console.log(result.getMoneyEarned());            }
+     
 
-        // if (result.getPizzasCooked() != 0) {
-        //     console.log("Pizzas");
-        //     console.log(result.getPizzaCount());
-        //     console.log(result.getTotalSlices());
-        //     console.log(result.getRemainingSlices());
-        // }
+    audioManager.consumeGameResult(
+        result
+    );
 
-        
-
-        // const events = result.getEvents();
-        // for (const event of events) {
-        //     if (event === GameEvent.CLICK) {
-        //         console.log("click");
-        //     }
-        // }
-
-        audioManager.consumeGameResult(
-            result
-        );
-
-        uiManager.consumeGameResult(
-            result
-        );
-
-    }
-
+    uiManager.consumeGameResult(
+        result
+    );
 
 
     requestAnimationFrame(

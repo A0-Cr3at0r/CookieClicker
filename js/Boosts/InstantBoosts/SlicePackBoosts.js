@@ -11,7 +11,7 @@ export default class SlicePackBoost extends InstantBoost {
 
         boostActions.addSlices(100);
 
-        return boostActions
+        return boostActions;
     }
 
 }

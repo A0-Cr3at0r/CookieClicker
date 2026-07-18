@@ -10,7 +10,6 @@ export default class GameResult {
     #pizzasCooked;
 
 
-    #moneyEarned;
     #balance;
 
 
@@ -31,7 +30,6 @@ export default class GameResult {
         this.#pizzasCooked = 0;
 
 
-        this.#moneyEarned = 0;
         this.#balance = 0;
 
 
@@ -65,11 +63,6 @@ export default class GameResult {
 
     getPizzasCooked() {
         return this.#pizzasCooked;
-    }
-
-
-    getMoneyEarned() {
-        return this.#moneyEarned;
     }
 
 
@@ -133,16 +126,6 @@ export default class GameResult {
     setPizzasCooked(value) {
 
         this.#pizzasCooked = value;
-
-        return this;
-
-    }
-
-
-
-    setMoneyEarned(value) {
-
-        this.#moneyEarned = value;
 
         return this;
 
@@ -236,17 +219,6 @@ export default class GameResult {
 
 
 
-    addMoneyEarned(amount) {
-
-        this.#moneyEarned += amount;
-
-        return this;
-
-    }
-
-
-
-
     //=========================
     // Events
     //=========================
@@ -302,11 +274,6 @@ export default class GameResult {
 
         this.addPizzasCooked(
             other.getPizzasCooked()
-        );
-
-
-        this.addMoneyEarned(
-            other.getMoneyEarned()
         );
 
 

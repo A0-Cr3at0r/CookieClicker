@@ -31,95 +31,36 @@ export class Game {
      */
     applyActions(actions) {
 
+        const totalSlices = this.totalSlices();
 
-        const result = new GameResult();
+        const clicks = actions.getClick() * actions.getSliceMultiplier();
+        const slicesAdded = actions.getSlicesAdded();
+        const pizzasAdded = actions.getPizzaAdded();
 
+        // Nombre total de slices produites.
+        const slicesCooked =
+            clicks +
+            slicesAdded +
+            pizzasAdded * totalSlices;
 
+        // Les clicks et les slices ajoutées consomment des parts.
+        const pizzasFromSlices =
+            this.#cookSlices(clicks + slicesAdded);
 
-        //=========================
-        // Clics
-        //=========================
-
-        const clicks = actions.getClick();
-
-        if(clicks > 0) {
-
-            result.addClicks(clicks);
-
-            this.#cookSlices(
-                clicks,
-                result
-            );
-
-        }
-
-        if (clicks === 1) {
-            result.addEvent(GameEvent.CLICK);
-        }
-
-        
-
-        //=========================
-        // Ajout direct de slices
-        //=========================
-
-        const slicesAdded =
-            actions.getSlicesAdded();
-
-
-        if(slicesAdded > 0) {
-
-            this.#cookSlices(
-                slicesAdded,
-                result
-            );
-
-        }
-
-
-
-        //=========================
-        // Ajout direct de pizzas
-        //=========================
-
-        const pizzasAdded =
-            actions.getPizzaAdded();
-
-
-        if(pizzasAdded > 0) {
-
+        // Les pizzas ajoutées directement.
+        if (pizzasAdded > 0) {
             this.#pizzaCount += pizzasAdded;
+        }
 
+        const pizzasCooked =
+            pizzasFromSlices +
+            pizzasAdded;
 
-            result.addPizzasCooked(
-                pizzasAdded
-            );
-
-
-            result.addEvent(
-                GameEvent.PIZZA_COOKED
-            );
-
-        } 
-
-
-
-        //=========================
-        // Etat courant
-        //=========================
-
-        result
-            .setRemainingSlices(
-                this.#remainingSlices
-            )
-            .setPizzaCount(
-                this.#pizzaCount
-            ).setTotalSlices(
-                this.totalSlices()
-            );
-
-
-        return result;
+        return this.#createResult(
+            clicks,
+            slicesCooked,
+            pizzasCooked
+        );
 
     }
 
@@ -127,48 +68,52 @@ export class Game {
 
 
 
-    #cookSlices(amount, result) {
+    #cookSlices(amount) {
 
+        let pizzasCooked = 0;
 
-        let remaining = amount;
+        while (amount > 0) {
 
-
-
-        while(remaining > 0) {
-
-
-            if(this.#remainingSlices > 0) {
-
+            if (this.#remainingSlices > 0) {
 
                 this.#remainingSlices--;
+                amount--;
 
-                result.addSlicesCooked(1);
+            } else {
 
-                remaining--;
-
-            }
-
-
-            else {
-
-
-                this.#remainingSlices =
-                    this.totalSlices();
-
-
+                this.#remainingSlices = this.totalSlices();
                 this.#pizzaCount++;
-
-
-                result.addPizzasCooked(1);
-
-
-                result.addEvent(
-                    GameEvent.PIZZA_COOKED
-                );
+                pizzasCooked++;
 
             }
 
         }
+
+        return pizzasCooked;
+
+    }
+
+    #createResult(clicks, slicesCooked, pizzasCooked, sliceMultiplier, moneyMultiplier) {
+
+        const result = new GameResult();
+
+        result
+            .setClicks(clicks)
+            .setSlicesCooked(slicesCooked)
+            .setPizzasCooked(pizzasCooked)
+            .setRemainingSlices(this.#remainingSlices)
+            .setPizzaCount(this.#pizzaCount)
+            .setTotalSlices(this.totalSlices());
+
+        if (clicks > 0) {
+            result.addEvent(GameEvent.CLICK);
+        }
+
+        if (pizzasCooked > 0) {
+            result.addEvent(GameEvent.PIZZA_COOKED);
+        }
+
+        return result;
 
     }
 

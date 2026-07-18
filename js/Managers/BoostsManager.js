@@ -56,9 +56,6 @@ export default class BoostManager {
 
         }
 
-
-        return this.computeActions();
-
     }
 
 
@@ -99,8 +96,6 @@ export default class BoostManager {
             );
 
         this.#instantBoosts = [];
-
-
 
         return actions;
 

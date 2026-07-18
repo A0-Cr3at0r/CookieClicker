@@ -2,12 +2,14 @@ export default class Wallet {
 
     #balance;
     #pizzaPrice;
+    #moneyMultiplier;
 
 
     constructor(initialBalance = 10, pizzaPrice = 5) {
         
         this.#balance = initialBalance;
         this.#pizzaPrice = pizzaPrice;
+        this.#moneyMultiplier = 1;
 
     }
 
@@ -44,7 +46,11 @@ export default class Wallet {
     }
 
     sell(pizzasSold) {
-        this.add(pizzasSold * this.#pizzaPrice);
+        this.add(pizzasSold * this.#pizzaPrice * this.#moneyMultiplier);
+    }
+
+    setMoneyMultiplier(moneyMultiplier) {
+            this.#moneyMultiplier = moneyMultiplier; 
     }
 
 

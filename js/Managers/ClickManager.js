@@ -30,17 +30,19 @@ export default class ClickManager {
 
 
 
-    click(
-        boostActions = new BoostActions(1)
-    ) {
+    click(click = 0) 
+    {
 
+        const actions = this.#boostManager.computeActions();
 
-        const actions =
-            this.#applyModifiers(boostActions);
+        actions.addClick(click);
 
+        console.log(actions.getSliceMultiplier(), actions.getMoneyMultiplier(), actions.getSlicesAdded(), actions.getPizzaAdded(), actions.getClick());
 
         const result =
             this.#game.applyActions(actions);
+
+        this.#wallet.setMoneyMultiplier(actions.getMoneyMultiplier());
     
         this.#updateMetrics(result);
 
@@ -50,17 +52,23 @@ export default class ClickManager {
         );
 
 
-        result.setMetrics(
-            this.#metricManager.getSnapshot()
-        );
+        const metrics =
+            this.#metricManager.getSnapshot();
+
+
+        metrics["Slice Multiplier"] =
+            actions.getSliceMultiplier();
+
+
+        metrics["Money Multiplier"] =
+            actions.getMoneyMultiplier();
+
+
+        result.setMetrics(metrics);
 
         return result;
 
     }
-
-
-
-
 
 
     buy(boost) {
@@ -79,14 +87,11 @@ export default class ClickManager {
         }
 
 
-
-        const actions =
-            this.#boostManager.buy(boost);
-
+        this.#boostManager.buy(boost);
 
 
         const result =
-            this.click(actions);
+            this.click();
 
 
 
@@ -105,10 +110,6 @@ export default class ClickManager {
         return result;
 
     }
-
-
-
-
 
 
     #updateMetrics(result) {
@@ -158,10 +159,7 @@ export default class ClickManager {
 
 
 
-        modified.setClick(
-            actions.getClick()
-        );
-
+        modified.merge(actions);
 
 
         modified.setSlicesAdded(
@@ -171,19 +169,6 @@ export default class ClickManager {
             actions.getSliceMultiplier()
 
         );
-
-
-
-        modified.setPizzaAdded(
-            actions.getPizzaAdded()
-        );
-
-
-
-        modified.setMoneyMultiplier(
-            actions.getMoneyMultiplier()
-        );
-
 
 
         return modified;

@@ -16,16 +16,12 @@
     <link rel="stylesheet" href="css/darkTheme.css">
     <link rel="stylesheet" href="css/settings.css"> 
 
-
-
     <script type="module" src="js/main.js"></script>
     
 </head>
 <body>
     <header class="header">
-
         <button id="menuButton">☰</button>
-
         <h1>🍴🍕Pizza Clicker🍕🍴</h1>
 
         <a href="assets/icons/pizzaLOGO.jpg">
@@ -33,10 +29,7 @@
                 src="assets/icons/pizzaLOGOWithoutBG.png"
                 alt="Logo Pizza Clicker">
         </a>
-
     </header>
-
-
 
     <!-- ==========================
         Main Menu
@@ -51,42 +44,25 @@
         </button>
 
         <ul>
-
             <li>
-                <a href="index.html">
-                    Home
-                </a>
+                <button>Home</button>
             </li>
-
             <li>
-                <a href="#">
-                    Shop
-                </a>
+                <button> Shop</button>
             </li>
-
             <li>
-                <button id="settingsButton">
-                    Settings
-                </button>
+                <button id="settingsButton"> Settings </button>
             </li>
-
             <li>
-                <a href="#">
-                    Stats
-                </a>
+                <button>Stats</button>
             </li>
-
         </ul>
-
     </nav>
 
     <div
         id="overlay"
         class="overlay">
     </div>
-
-
-
 
     <!-- ==========================
         Settings Panel
@@ -100,100 +76,64 @@
             &times;
         </button>
 
-
-
-        <h2>
-            ⚙️ Settings
-        </h2>
-
-
+        <h2> ⚙️ Settings </h2>
 
         <!-- Audio -->
 
         <section>
-
-            <h3>
-                Audio
-            </h3>
+            <h3>Audio </h3>
 
             <label>
-
                 <input
                     id="muteAudio"
                     type="checkbox">
-
                 Mute
-
             </label>
 
 
             <label>
-
                 Music Volume
-
                 <input
                     id="musicVolume"
                     type="range"
                     min="0"
                     max="100"
                     value="50">
-
             </label>
 
 
             <label>
-
                 Sound Effects
-
                 <input
                     id="sfxVolume"
                     type="range"
                     min="0"
                     max="100"
                     value="100">
-
             </label>
-
         </section>
-
-
 
         <!-- Appearance -->
 
         <section>
-
-            <h3>
-                Appearance
-            </h3>
-
+            <h3> Appearance </h3>
             <label>
-
                 <input
                     id="darkTheme"
                     type="checkbox">
-
                 Dark Theme
-
             </label>
-
         </section>
-
-
 
         <!-- Pizza skins -->
 
         <section>
-
-            <h3>
-                Pizza Skin
-            </h3>
+            <h3>Pizza Skin</h3>
 
             <div id="pizzaSkins">
-
                 <div
                     class="pizza-skin"
                     data-skin="classic">
-
                     <img
                         src="assets/images/PizzaGame.png"
                         alt="Classic Pizza">
@@ -202,25 +142,17 @@
 
                 </div>
 
-
-
-                <div
-                    class="pizza-skin"
-                    data-skin="mexican">
+                <div class="pizza-skin"
+                     data-skin="mexican">
 
                     <img
                         src="assets/images/MexicanPizza.png"
                         alt="Mexican Pizza">
 
                     <p>Mexican</p>
-
                 </div>
-
-
-
-                <div
-                    class="pizza-skin"
-                    data-skin="allDressed">
+                <div class="pizza-skin"
+                     data-skin="allDressed">
 
                     <img
                         src="assets/images/AllDressed.png"
@@ -230,9 +162,8 @@
 
                 </div>
 
-                <div
-                    class="pizza-skin"
-                    data-skin="goodPizza">
+                <div class="pizza-skin"
+                     data-skin="goodPizza">
 
                     <img
                         src="assets/images/GoodPizza.png"
@@ -242,38 +173,26 @@
 
                 </div>
 
-                <div
-                    class="pizza-skin"
-                    data-skin="ultimate">
+                <div class="pizza-skin"
+                     data-skin="ultimate">
 
                     <img
                         src="assets/images/UltimatePizza.png"
                         alt="Angry Pizza with red face">
 
                     <p>Ultimate Pizza</p>
-
                 </div>
-
             </div>
-
         </section>
-
-
 
         <!-- Save -->
 
         <section>
-
-            <h3>
-                Save Data
-            </h3>
-
+            <h3> Save Data</h3>
             <button id="resetButton">
                 Reset Progress
             </button>
-
         </section>
-
     </aside>
 
     <div
@@ -327,7 +246,6 @@
 
             <h2>Game Metrics</h2>
 
-
             <div class="metric-card">
                 <span>Total clicks</span>
                 <strong id="totalClicks">0</strong>
@@ -357,16 +275,12 @@
                 <strong id="pizzasPerSecond">0</strong>
             </div>
 
-
-
             <h3>Active effects</h3>
-
 
             <div class="metric-card active">
                 <span>Slice multiplier</span>
                 <strong id="sliceMultiplier">x1</strong>
             </div>
-
 
             <div class="metric-card active">
                 <span>Money Bonus</span>

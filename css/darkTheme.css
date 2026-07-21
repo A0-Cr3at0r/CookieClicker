@@ -3,274 +3,202 @@
 ========================= */
 
 body.dark {
-
     background-color: #121212;
     color: #eeeeee;
-
-}
-
-
-
-body.dark .header {
-
-    background-color: #1f6f2d;
-    color: white;
-
-}
-
-
-
-body.dark header h1 {
-
-    color: #ffffff;
-
-}
-
-
-
-body.dark .side-menu {
-
-    background-color: #1b1b1b;
-
-}
-
-
-
-body.dark .side-menu a {
-
-    color: white;
-
-}
-
-
-
-body.dark #menuButton,
-body.dark #closeButton {
-
-    color: white;
-
-}
-
-
-
-body.dark #menuButton:hover,
-body.dark #closeButton:hover {
-
-    background-color: #333;
-
-    color: #ce02ee;
-
-}
-
-
-
-/* Sections settings */
-
-body.dark main section,
-body.dark .settings-panel section {
-
-    background-color:#1e1e1e;
-    color:#eeeeee;
-    border-color:#333;
-
-}
-
-
-
-body.dark h2 {
-
-    color: #ffffff;
-
-}
-
-
-
-/* Inputs */
-
-body.dark input[type="range"] {
-
-    accent-color: #04ef3e;
-
-}
-
-
-
-/* Pizza skins */
-
-body.dark .pizza-skin {
-
-    background-color: #252525;
-
-    color: white;
-
-}
-
-
-
-body.dark .pizza-skin:hover {
-
-    background-color: #333;
-
-}
-
-
-
-/* Boutons */
-
-body.dark button {
-
-    background-color: #333;
-
-    color: white;
-
-}
-
-
-
-body.dark button:hover {
-
-    background-color: #04ef3e;
-
-    color: black;
-
-}
-
-
-
-/* Footer */
-
-body.dark .footer {
-
-    background-color: #050505;
-
 }
 
 
 /* =========================
-   Dark Boosts
+   Header
 ========================= */
 
+body.dark .header {
+    background-color: #1f6f2d;
+    color: #ffffff;
+}
+
+body.dark .header h1 {
+    color: #ffffff;
+}
+
+
+/* =========================
+   Side Menu
+========================= */
+
+body.dark .side-menu {
+    background-color: #1b1b1b;
+}
+
+body.dark .side-menu a {
+    color: #ffffff;
+}
+
+body.dark #menuButton,
+body.dark #closeButton {
+    color: #ffffff;
+}
+
+body.dark #menuButton:hover,
+body.dark #closeButton:hover {
+    background-color: #333;
+    color: #ce02ee;
+}
+
+
+/* =========================
+   Main Sections
+========================= */
+
+body.dark main section {
+    background-color: #1e1e1e;
+    color: #eeeeee;
+    border-color: #333;
+}
+
+body.dark h2 {
+    color: #ffffff;
+}
+
+
+/* =========================
+   Boosts
+========================= */
 
 body.dark .boosts {
-
-    background-color:#1e1e1e;
-    color:#eeeeee;
-
+    background-color: #1e1e1e;
+    color: #eeeeee;
 }
-
 
 body.dark .boost-container {
-
-    background-color:#151515;
-
+    background-color: #151515;
 }
-
-
 
 body.dark .boost-card {
-
-    background-color:#252525;
-    color:#eeeeee;
-
+    background-color: #252525;
+    color: #eeeeee;
 }
-
-
-
-body.dark .boost-info small {
-
-    color:#bbbbbb;
-
-}
-
-
 
 body.dark .boost-card.disabled {
-
-    background-color:#333;
-
+    background-color: #333;
 }
 
-
+body.dark .boost-info small {
+    color: #bbbbbb;
+}
 
 body.dark .boost-price {
-
-    background-color:#04ef3e;
-    color:#111;
-
+    background-color: #04ef3e;
+    color: #111;
 }
+
+
+/* =========================
+   Metrics
+========================= */
+
+body.dark .metrics {
+    background-color: #1e1e1e;
+    color: #eeeeee;
+}
+
+body.dark .metrics h3 {
+    color: #cccccc;
+}
+
+body.dark .metric-card {
+    background-color: #252525;
+    color: #eeeeee;
+}
+
+body.dark .metric-card.active {
+    background-color: #333;
+}
+
+
+/* =========================
+   Game
+========================= */
+
+body.dark main .stats button {
+    background-color: #270347;
+    color: #ffffff;
+}
+
+body.dark main .stats button:hover {
+    background-color: #f902af;
+    color: rgb(28, 1, 65);
+}
+
+
+/* =========================
+   Settings Panel
+========================= */
 
 body.dark .settings-panel {
-
-    background:#121212;
-    color:#eeeeee;
-
+    background-color: #121212;
+    color: #eeeeee;
 }
 
-body.dark .settings-panel label {
-
-    background:#252525;
-    color:#eeeeee;
-
-}
-
-body.dark .pizza-skin.selected {
-
-    background:#333;
-    border-color:#04ef3e;
-
+body.dark .settings-panel section {
+    background-color: #1e1e1e;
+    color: #eeeeee;
+    border-color: #333;
 }
 
 body.dark .settings-panel h2,
 body.dark .settings-panel h3 {
+    color: #ffffff;
+}
 
-    color:#ffffff;
+body.dark .settings-panel label {
+    background-color: #252525;
+    color: #eeeeee;
+}
 
+body.dark input[type="range"] {
+    accent-color: #04ef3e;
 }
 
 
+/* =========================
+   Pizza Skins
+========================= */
 
-body.dark .metrics {
+body.dark .pizza-skin {
+    background-color: #252525;
+    color: #ffffff;
+}
 
-    background:#1e1e1e;
-    color:#eeeeee;
+body.dark .pizza-skin:hover {
+    background-color: #333;
+}
 
+body.dark .pizza-skin.selected {
+    background-color: #333;
+    border-color: #04ef3e;
 }
 
 
-body.dark .metrics h3 {
+/* =========================
+   Buttons
+========================= */
 
-    color:#cccccc;
+body.dark button {
+    background-color: #333;
+    color: #ffffff;
+}
 
+body.dark button:hover {
+    background-color: #04ef3e;
+    color: #000000;
 }
 
 
+/* =========================
+   Footer
+========================= */
 
-body.dark .metric-card {
-
-    background:#252525;
-    color:#eeeeee;
-
-}
-
-
-
-body.dark .metric-card.active {
-
-    background:#333;
-
-}
-
-body.dark main .stats button {
-
-    background-color:#270347;
-    color:white;
-
-}
-
-
-body.dark main .stats button:hover {
-
-    background-color:#f902af;
-    color:rgb(28, 1, 65);
-
+body.dark .footer {
+    background-color: #050505;
 }

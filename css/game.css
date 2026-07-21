@@ -1,3 +1,7 @@
+/* =========================
+   Main Layout
+========================= */
+
 main {
 
     display: flex;
@@ -10,28 +14,39 @@ main {
 
 }
 
+
 .game {
+
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
     gap: 2rem;
+
 }
 
-/* -----------------------------------------------------
-   Boosts
------------------------------------------------------ */
+
+
+/* =========================
+   Boosts Container
+========================= */
 
 .boosts {
 
     display:flex;
+
     flex-direction:column;
 
     width:340px;
+
     height:520px;
 
     padding:1rem;
 
     background-color:#fee488;
+
     border-radius:20px;
 
     box-sizing:border-box;
@@ -53,6 +68,7 @@ main {
 
 }
 
+
 .boost-container {
 
     flex:1;
@@ -62,6 +78,7 @@ main {
     overflow-y:auto;
 
     padding-right: 0.5rem;
+
     padding-left: 0.5rem;
 
     background-color: #e0c460;
@@ -72,6 +89,7 @@ main {
 .boost-container ul {
 
     display:flex;
+
     flex-direction:column;
 
     gap:.8rem;
@@ -79,29 +97,56 @@ main {
     list-style:none;
 
     padding:0;
+
     margin:1rem 0;
 
 }
 
+
+
+/* =========================
+   Boost Scrollbar
+========================= */
+
 .boost-container::-webkit-scrollbar {
+
     width: 10px;
+
 }
+
 
 .boost-container::-webkit-scrollbar-track {
+
     background:#f5a73a;
+
     border-radius:10px;
+
 }
+
 
 .boost-container::-webkit-scrollbar-thumb {
+
     background:#d17d08;
+
     border-radius:10px;
+
 }
+
 
 .boost-container::-webkit-scrollbar-thumb:hover {
+
     background:#673d03;
+
 }
 
+
+
+/* =========================
+   Boost Card
+========================= */
+
 .boost-card {
+
     position: relative;
 
     display:grid;
@@ -123,10 +168,13 @@ main {
     user-select:none;
 
     transition:
+
         transform .15s,
+
         box-shadow .15s;
 
 }
+
 
 .boost-card:hover {
 
@@ -136,20 +184,29 @@ main {
 
 }
 
+
 .boost-card:active {
 
     transform:scale(.97);
 
 }
 
+
 .boost-card img {
 
     width:55px;
+
     height:55px;
 
     border-radius:12px;
 
 }
+
+
+
+/* =========================
+   Disabled Boost
+========================= */
 
 .boost-card.disabled {
 
@@ -163,22 +220,109 @@ main {
 .boost-card.disabled img {
 
     filter:grayscale(100%);
+
     opacity:.45;
 
 }
 
 
 .boost-card.disabled .boost-info {
+
     opacity:.55;
+
 }
 
 
 .boost-card.disabled .boost-price {
 
     background:#9a9a9a;
+
     color:#efefef;
 
 }
+
+
+
+/* =========================
+   Boost Information
+========================= */
+
+.boost-info strong {
+
+    font-size:1rem;
+
+}
+
+
+.boost-info small {
+
+    font-size:.85rem;
+
+    color:#4b4b4b;
+
+}
+
+
+
+/* =========================
+   Boost Price
+========================= */
+
+.boost-price {
+
+    background:#03e459;
+
+    color:white;
+
+    font-weight:bold;
+
+    padding:.5rem .7rem;
+
+    border-radius:20px;
+
+    white-space:nowrap;
+
+}
+
+
+
+/* =========================
+   Wallet & Messages
+========================= */
+
+.wallet {
+
+    flex-shrink:0;
+
+}
+
+
+.boost-message {
+
+    margin:0;
+
+    font-weight:bold;
+
+    color:#d60000;
+
+    opacity:0;
+
+    transition:opacity .4s ease;
+
+}
+
+
+.boost-message.visible {
+
+    opacity:1;
+
+}
+
+
+
+/* =========================
+   Boost Tooltips
+========================= */
 
 .boost-tooltip-global {
 
@@ -211,6 +355,7 @@ main {
     visibility:hidden;
 
     transition:
+
         opacity .15s ease;
 
     z-index:9999;
@@ -220,22 +365,12 @@ main {
 }
 
 
-.boost-info strong {
-    font-size:1rem;
-}
-
-
-.boost-info small {
-    font-size:.85rem;
-    color:#4b4b4b;
-}
-
-
 .boost-tooltip {
 
     position:absolute;
 
     left:50%;
+
     top:120%;
 
     transform:translateX(-50%);
@@ -251,6 +386,7 @@ main {
     border-radius:12px;
 
     display:flex;
+
     flex-direction:column;
 
     gap:.4rem;
@@ -264,12 +400,15 @@ main {
     visibility:hidden;
 
     transition:
+
         opacity .2s ease,
+
         visibility .2s ease;
 
     z-index:1000;
 
 }
+
 
 .boost-tooltip-global.visible {
 
@@ -279,53 +418,9 @@ main {
 
 }
 
-
-.boost-price {
-
-    background:#03e459;
-
-    color:white;
-
-    font-weight:bold;
-
-    padding:.5rem .7rem;
-
-    border-radius:20px;
-
-    white-space:nowrap;
-
-}
-
-.wallet {
-
-    flex-shrink:0;
-
-}
-
-
-.boost-message {
-
-    margin:0;
-
-    font-weight:bold;
-
-    color:#d60000;
-
-    opacity:0;
-
-    transition:opacity .4s ease;
-
-}
-
-.boost-message.visible {
-
-    opacity:1;
-
-}
-
-/* -----------------------------------------------------
+/* =========================
    Metrics
------------------------------------------------------ */
+========================= */
 
 .metrics {
 
@@ -338,11 +433,13 @@ main {
     border-radius: 20px;
 
     display: flex;
+
     flex-direction: column;
 
     gap: 0.35rem;
 
     margin: 3rem;
+
     margin-top: 2rem;
 
     min-width: 250px;
@@ -352,7 +449,6 @@ main {
     color: #4a3728;
 
 }
-
 
 
 .metrics h2 {
@@ -366,7 +462,6 @@ main {
 }
 
 
-
 .metrics h3 {
 
     margin: 0.7rem 0 0.25rem;
@@ -378,6 +473,10 @@ main {
 }
 
 
+
+/* =========================
+   Metric Cards
+========================= */
 
 .metric-card {
 
@@ -397,7 +496,6 @@ main {
 }
 
 
-
 .metric-card span {
 
     font-weight: 600;
@@ -405,7 +503,6 @@ main {
     font-size: 0.9rem;
 
 }
-
 
 
 .metric-card strong {
@@ -417,13 +514,11 @@ main {
 }
 
 
-
 .metric-card.active {
 
     background-color: #fee488;
 
 }
-
 
 
 .metric-card:hover {
@@ -434,9 +529,11 @@ main {
 
 }
 
-/* -----------------------------------------------------
-   Stats
------------------------------------------------------ */
+
+
+/* =========================
+   Game Stats
+========================= */
 
 main .stats {
 
@@ -454,73 +551,153 @@ main .stats {
 
 }
 
+
 main .stats p {
+
     margin: 2px;
+
     font-size: 1rem;
+
     font-weight: 1000;
+
 }
 
 
 main .stats p:first-child {
+
     justify-self: start;
+
     margin-left: 0rem;
+
 }
+
 
 main .stats p:last-child {
+
     justify-self: end;
+
     margin-right: 0rem;
+
 }
 
+
+
+/* =========================
+   Cook Button
+========================= */
+
 main .stats button {
+
     justify-self: center;
 
+
     padding: 0.8rem 2rem;
+
     font-size: 1.2rem;
+
     font-weight: bold;
 
+
     border: none;
+
     border-radius: 10px;
 
+
     background-color: #48539e;
+
     color: white;
+
 
     cursor: pointer;
 
-    transition: transform 0.2s, background-color 0.2s;
+
+    transition:
+
+        transform 0.2s,
+
+        background-color 0.2s;
+
 }
 
+
 main .stats button:hover {
+
     background-color: #171b34;
+
     transform: scale(1.05);
+
 }
 
 
 main .stats button:active {
+
     transform: scale(0.95);
+
 }
 
-/* -----------------------------------------------------
-   Pizzas Canvas
------------------------------------------------------ */
 
-#pizzaCanvas{
+
+/* =========================
+   Pizza Canvas
+========================= */
+
+#pizzaCanvas {
+
     width: 70%;
+
     height: 50%;
+
     margin-top: 1rem;
+
 }
+
+
+
+/* =========================
+   Pizza Click Animation
+========================= */
 
 @keyframes pizzaClick {
-    0% {transform: scale(1) rotate(0deg);}
-    25% {transform: scale(0.85) rotate(-20deg);}
-    50% {transform: scale(0.95) rotate(25deg);}
-    75% {transform: scale(1.05) rotate(-10deg);}
-    100% {transform: scale(1) rotate(5deg);}
+
+    0% {
+
+        transform: scale(1) rotate(0deg);
+
+    }
+
+
+    25% {
+
+        transform: scale(0.85) rotate(-20deg);
+
+    }
+
+
+    50% {
+
+        transform: scale(0.95) rotate(25deg);
+
+    }
+
+
+    75% {
+
+        transform: scale(1.05) rotate(-10deg);
+
+    }
+
+
+    100% {
+
+        transform: scale(1) rotate(5deg);
+
+    }
 
 }
+
 
 .click-animation {
+
     animation: pizzaClick 150ms ease;
+
 }
-
-
-

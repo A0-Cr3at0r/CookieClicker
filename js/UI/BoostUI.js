@@ -100,9 +100,11 @@ export default class BoostUI {
 
     #createBoostCards(boosts) {
 
-        for (const boost of boosts) {
+        for (const createBoost of boosts) {
 
-            const card = this.#createBoostCard(boost);
+            const boost = createBoost();
+
+            const card = this.#createBoostCard(boost, createBoost);
 
             this.#cards.set(boost, card);
 
@@ -113,7 +115,7 @@ export default class BoostUI {
     }
 
 
-    #createBoostCard(boost) {
+    #createBoostCard(boost, createBoost) {
 
         const li = document.createElement("li");
 
@@ -141,7 +143,7 @@ export default class BoostUI {
 
         li.addEventListener("click", () => {
 
-            const success = this.#onBuy(boost);
+            const success = this.#onBuy(createBoost);
 
             if (!success) {
 

@@ -1,0 +1,276 @@
+/* =========================
+   Dark Theme
+========================= */
+
+body.dark {
+
+    background-color: #121212;
+    color: #eeeeee;
+
+}
+
+
+
+body.dark .header {
+
+    background-color: #1f6f2d;
+    color: white;
+
+}
+
+
+
+body.dark header h1 {
+
+    color: #ffffff;
+
+}
+
+
+
+body.dark .side-menu {
+
+    background-color: #1b1b1b;
+
+}
+
+
+
+body.dark .side-menu a {
+
+    color: white;
+
+}
+
+
+
+body.dark #menuButton,
+body.dark #closeButton {
+
+    color: white;
+
+}
+
+
+
+body.dark #menuButton:hover,
+body.dark #closeButton:hover {
+
+    background-color: #333;
+
+    color: #ce02ee;
+
+}
+
+
+
+/* Sections settings */
+
+body.dark main section,
+body.dark .settings-panel section {
+
+    background-color:#1e1e1e;
+    color:#eeeeee;
+    border-color:#333;
+
+}
+
+
+
+body.dark h2 {
+
+    color: #ffffff;
+
+}
+
+
+
+/* Inputs */
+
+body.dark input[type="range"] {
+
+    accent-color: #04ef3e;
+
+}
+
+
+
+/* Pizza skins */
+
+body.dark .pizza-skin {
+
+    background-color: #252525;
+
+    color: white;
+
+}
+
+
+
+body.dark .pizza-skin:hover {
+
+    background-color: #333;
+
+}
+
+
+
+/* Boutons */
+
+body.dark button {
+
+    background-color: #333;
+
+    color: white;
+
+}
+
+
+
+body.dark button:hover {
+
+    background-color: #04ef3e;
+
+    color: black;
+
+}
+
+
+
+/* Footer */
+
+body.dark .footer {
+
+    background-color: #050505;
+
+}
+
+
+/* =========================
+   Dark Boosts
+========================= */
+
+
+body.dark .boosts {
+
+    background-color:#1e1e1e;
+    color:#eeeeee;
+
+}
+
+
+body.dark .boost-container {
+
+    background-color:#151515;
+
+}
+
+
+
+body.dark .boost-card {
+
+    background-color:#252525;
+    color:#eeeeee;
+
+}
+
+
+
+body.dark .boost-info small {
+
+    color:#bbbbbb;
+
+}
+
+
+
+body.dark .boost-card.disabled {
+
+    background-color:#333;
+
+}
+
+
+
+body.dark .boost-price {
+
+    background-color:#04ef3e;
+    color:#111;
+
+}
+
+body.dark .settings-panel {
+
+    background:#121212;
+    color:#eeeeee;
+
+}
+
+body.dark .settings-panel label {
+
+    background:#252525;
+    color:#eeeeee;
+
+}
+
+body.dark .pizza-skin.selected {
+
+    background:#333;
+    border-color:#04ef3e;
+
+}
+
+body.dark .settings-panel h2,
+body.dark .settings-panel h3 {
+
+    color:#ffffff;
+
+}
+
+
+
+body.dark .metrics {
+
+    background:#1e1e1e;
+    color:#eeeeee;
+
+}
+
+
+body.dark .metrics h3 {
+
+    color:#cccccc;
+
+}
+
+
+
+body.dark .metric-card {
+
+    background:#252525;
+    color:#eeeeee;
+
+}
+
+
+
+body.dark .metric-card.active {
+
+    background:#333;
+
+}
+
+body.dark main .stats button {
+
+    background-color:#270347;
+    color:white;
+
+}
+
+
+body.dark main .stats button:hover {
+
+    background-color:#f902af;
+    color:rgb(28, 1, 65);
+
+}

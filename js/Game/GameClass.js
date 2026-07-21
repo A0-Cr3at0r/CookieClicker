@@ -57,7 +57,7 @@ export class Game {
             pizzasAdded;
 
         return this.#createResult(
-            clicks,
+            actions.getClick(),
             slicesCooked,
             pizzasCooked
         );
@@ -93,7 +93,7 @@ export class Game {
 
     }
 
-    #createResult(clicks, slicesCooked, pizzasCooked, sliceMultiplier, moneyMultiplier) {
+    #createResult(clicks, slicesCooked, pizzasCooked) {
 
         const result = new GameResult();
 

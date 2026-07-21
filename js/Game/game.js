@@ -17,6 +17,7 @@ import { PizzaUI } from "../UI/PizzaUI.js";
 import MetricUI from "../UI/MetricUI.js";
 import BoostUI from "../UI/BoostUI.js";
 import UIManager from "../Managers/UIMangers.js";
+import SettingsUI from "../UI/SettingsUI.js";
 
 
 // Managers
@@ -25,6 +26,9 @@ import MetricManager from "../Managers/MetricManager.js";
 import BoostManager from "../Managers/BoostsManager.js";
 import ClickManager from "../Managers/ClickManager.js";
 import SaveManager from "../Managers/SaveManager.js";
+import ThemeManager from "../Managers/ThemeManager.js";
+import SkinManager from "../Managers/SkinManager.js";
+import SettingsManager from "../Managers/SettingsManagers.js";
 
 
 // Wallet
@@ -42,14 +46,9 @@ import MoneyMultiplier from "../Metrics/MoneyMultiplier.js";
 
 
 // Boosts
-import MoneyBoost from "../Boosts/ModifierBoosts/MoneyBoost.js";
-import SlicesBoost from "../Boosts/ModifierBoosts/SlicesBoost.js";
-
-import SlicePackBoost from "../Boosts/InstantBoosts/SlicePackBoosts.js";
-import PizzaPackBoost from "../Boosts/InstantBoosts/PizzaPackBoost.js";
-
-import AutoClickerBoost from "../Boosts/ActiveBoosts/AutoClicker.js";
 import { GameEvent } from "./GameEvents.js";
+
+import BoostFactory from "../Boosts/BoostFactory.js";
 
 
 
@@ -72,6 +71,12 @@ const game =
     new Game(
         0,
         currentPizza
+    );
+
+
+const pizzaUI =
+    new PizzaUI(
+        document.getElementById("pizzaCanvas"),
     );
 
 
@@ -109,6 +114,22 @@ const clickManager =
 const audioManager =
     new AudioManager();
 
+audioManager.playBackgroundMusic();
+
+const themeManager =
+    new ThemeManager();
+
+
+const skinManager =
+    new SkinManager();
+
+const settingsManager =
+    new SettingsManager(
+        audioManager,
+        themeManager,
+        skinManager,
+        pizzaUI
+    );
 
 
 const saveManager =
@@ -116,14 +137,20 @@ const saveManager =
         game,
         wallet,
         boostManager,
-        metricManager
+        metricManager,
     );
 
+let allowSave = true;
+
 window.addEventListener(
-    "beforeunload",
-    () => {
-        saveManager.save();
-    }
+        "beforeunload",
+        () => {
+
+            if(allowSave) {
+                saveManager.save();
+            }
+
+        }
     );
 
 
@@ -168,60 +195,20 @@ metricManager.addMetric(
 // Boost registration
 //-----------------------------------------------------
 
-const boosts = [new MoneyBoost(
-                    "+20% Revenue",
-                    Prices.percent,
-                    Icons.percent,
-                    "Increase all revenues by 20%",
-                    Multipliers.percent
-                ),
-
-                new SlicesBoost(
-                    "x2 Slices",
-                    Prices.x2,
-                    Icons.x2,
-                    "Double your slices for 60 seconds",
-                    Multipliers.x2,
-                    Durations.x2
-                ),
-
-                new SlicesBoost(
-                    "x5 Slices",
-                    Prices.x5,
-                    Icons.x5,
-                    "Multiply your slices by 5 for 30 seconds",
-                    Multipliers.x5,
-                    Durations.x5
-                ),
-
-                new SlicePackBoost(
-                    Icons.slicePack
-                ),
-
-                new PizzaPackBoost(
-                    Icons.pizzaPack
-                ),
-
-
-                new AutoClickerBoost(
-                    Icons.autoClicker,
-                    AutoClickers.defaultClicksPerSecond
-                )
-]
+const boosts = [
+    BoostFactory.createMoneyBoost,
+    BoostFactory.createX2Boost,
+    BoostFactory.createX5Boost,
+    BoostFactory.createSlicePack,
+    BoostFactory.createPizzaPack,
+    BoostFactory.createAutoClicker
+];
 
 
 
 //-----------------------------------------------------
 // UI
 //-----------------------------------------------------
-
-
-const pizzaUI =
-    new PizzaUI(
-        document.getElementById("pizzaCanvas"),
-        currentPizza.getImage()
-    );
-
 
 
 const metricUI =
@@ -247,6 +234,11 @@ const uiManager =
         boostUI
     );
 
+const settingsUi = 
+    new SettingsUI(
+        settingsManager
+    );
+
 
 //-----------------------------------------------------
 // User inputs
@@ -269,7 +261,33 @@ document
         performClick
     );
 
+document
+    .getElementById("resetButton")
+    .addEventListener(
+        "click",
+        () => {
 
+            if(confirm("Reset all progress?")) {
+
+                allowSave = false;
+
+                saveManager.reset();
+                settingsManager.reset();
+
+                location.reload();
+
+            }
+
+        }
+    );
+
+document.addEventListener(
+    "pointerdown",
+    () => {
+        audioManager.playBackgroundMusic();
+    },
+    { once: true }
+);
 
 //-----------------------------------------------------
 // Gameplay actions
@@ -291,30 +309,21 @@ function performClick() {
         result
     );
 
-    wallet.sell(result.getPizzasCooked());
-
 }
 
 
 
-function purchaseBoost(boost) {
-    
+function purchaseBoost(createBoost) {
+
+    const boost = createBoost();
+
     const result =
         clickManager.buy(boost);
 
-
-    uiManager.consumeGameResult(
-        result
-    );
-
-
-    audioManager.consumeGameResult(
-        result
-    );
-
+    uiManager.consumeGameResult(result);
+    audioManager.consumeGameResult(result);
 
     return true;
-
 }
 
 
@@ -327,9 +336,13 @@ function purchaseBoost(boost) {
 let previousTime =
     performance.now();
 
-//saveManager.load();
+saveManager.load();
 
-saveManager.clear();
+settingsManager.load();
+
+settingsManager.apply();
+
+//saveManager.clear();
 
 requestAnimationFrame(
     gameLoop

@@ -1,5 +1,6 @@
 export class PizzaUI {
 
+
     #pizzaCountElement;
     #sliceCountElement;
 
@@ -8,27 +9,67 @@ export class PizzaUI {
 
     #pizzaImage;
 
+    #lastRemainingSlices;
+    #lastTotalSlices;
 
-    constructor(pizzaCanvas, imageSrc) {
+
+
+    constructor(
+        pizzaCanvas,
+    ) {
+
 
         this.#pizzaCountElement =
             document.getElementById("pizzaCount");
+
 
         this.#sliceCountElement =
             document.getElementById("sliceCount");
 
 
-        this.#pizzaCanvas = pizzaCanvas;
+
+        this.#pizzaCanvas =
+            pizzaCanvas;
+
 
         this.#ctx =
             this.#pizzaCanvas.getContext("2d");
 
 
-        this.#pizzaImage = new Image();
 
-        this.#pizzaImage.src = imageSrc;
+        this.#pizzaImage =
+            new Image();
+
+
 
     }
+
+
+
+    setSkin(imageSrc) {
+
+        this.#pizzaImage.onload = () => {
+
+            if(
+                this.#lastRemainingSlices !== undefined &&
+                this.#lastTotalSlices !== undefined
+            ) {
+
+                this.#drawPizzaSlices(
+                    this.#lastRemainingSlices,
+                    this.#lastTotalSlices
+                );
+
+            }
+
+        };
+
+
+        this.#pizzaImage.src =
+            imageSrc;
+
+    }
+
 
 
 
@@ -39,12 +80,20 @@ export class PizzaUI {
         totalSlices
     ) {
 
+        this.#lastRemainingSlices =
+            remainingSlices;
+
+        this.#lastTotalSlices =
+            totalSlices;
+
+
         this.#pizzaCountElement.textContent =
             pizzaCount;
 
 
         this.#sliceCountElement.textContent =
             remainingSlices;
+
 
         this.#drawPizzaSlices(
             remainingSlices,
@@ -54,14 +103,22 @@ export class PizzaUI {
     }
 
 
+
+
+
     #drawPizzaSlices(
         remainingSlices,
         totalSlices
     ) {
-       
-        const ctx = this.#ctx;
 
-        const canvas = this.#pizzaCanvas;
+
+        const ctx =
+            this.#ctx;
+
+
+        const canvas =
+            this.#pizzaCanvas;
+
 
 
         ctx.clearRect(
@@ -72,8 +129,11 @@ export class PizzaUI {
         );
 
 
+
         const visibleSlices =
             totalSlices - remainingSlices;
+
+
 
         const visibleAngle =
             (2 * Math.PI)
@@ -92,8 +152,12 @@ export class PizzaUI {
             canvas.height / 2;
 
 
+
         const radius =
-            Math.min(centerX, centerY) * 0.9;
+            Math.min(
+                centerX,
+                centerY
+            ) * 0.9;
 
 
 
@@ -124,6 +188,7 @@ export class PizzaUI {
         ctx.clip();
 
 
+
         ctx.drawImage(
             this.#pizzaImage,
             0,
@@ -131,6 +196,7 @@ export class PizzaUI {
             canvas.width,
             canvas.height
         );
+
 
 
         ctx.restore();
@@ -142,6 +208,7 @@ export class PizzaUI {
 
 
     pizzaClickAnimation() {
+
 
         this.#pizzaCanvas.classList.remove(
             "click-animation"
@@ -156,5 +223,6 @@ export class PizzaUI {
         );
 
     }
+
 
 }

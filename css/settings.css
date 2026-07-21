@@ -1,0 +1,354 @@
+/* =====================================================
+   Settings Panel
+===================================================== */
+
+.settings-panel {
+
+    position: fixed;
+
+    top: 0;
+    right: -430px;
+
+    width: 430px;
+    max-width: 95vw;
+
+    height: 100vh;
+
+    overflow-y: auto;
+
+    background: #f9faf2;
+
+    box-shadow:
+        -4px 0 18px rgba(0,0,0,.25);
+
+    transition: right .3s ease;
+
+    z-index: 1100;
+
+    padding: 1.5rem;
+
+}
+
+.settings-panel.open {
+
+    right: 0;
+
+}
+
+
+
+/* =====================================================
+   Close button
+===================================================== */
+
+#closeSettingsButton {
+
+    background: none;
+
+    border: none;
+
+    font-size: 2rem;
+
+    cursor: pointer;
+
+    float: right;
+
+    color: #333;
+
+}
+
+#closeSettingsButton:hover {
+
+    color: #ce02ee;
+
+}
+
+
+
+/* =====================================================
+   Title
+===================================================== */
+
+.settings-panel h2 {
+
+    text-align: center;
+
+    margin-bottom: 2rem;
+
+    color: #4a3728;
+
+}
+
+
+
+/* =====================================================
+   Sections
+===================================================== */
+
+.settings-panel section {
+
+    background: #fee488;
+
+    border-radius: 20px;
+
+    padding: 1rem;
+
+    margin-bottom: 1.5rem;
+
+    box-shadow:
+        0 5px 12px rgba(0,0,0,.15);
+
+}
+
+
+
+.settings-panel h3 {
+
+    text-align: center;
+
+    margin-bottom: 1rem;
+
+    color: #4a3728;
+
+}
+
+
+
+/* =====================================================
+   Controls
+===================================================== */
+
+.settings-panel label {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 1rem;
+
+    background: white;
+
+    border-radius: 15px;
+
+    padding: .8rem 1rem;
+
+    margin-bottom: .8rem;
+
+    font-weight: bold;
+
+}
+
+
+
+.settings-panel input[type="checkbox"] {
+
+    width: 20px;
+
+    height: 20px;
+
+    cursor: pointer;
+
+}
+
+
+
+.settings-panel input[type="range"] {
+
+    width: 180px;
+
+    accent-color: #04ef3e;
+
+    cursor: pointer;
+
+}
+
+
+
+/* =====================================================
+   Pizza skins
+===================================================== */
+
+#pizzaSkins {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(110px,1fr));
+
+    gap: 1rem;
+
+}
+
+
+
+.pizza-skin {
+
+    background: white;
+
+    border: 3px solid transparent;
+
+    border-radius: 18px;
+
+    padding: .8rem;
+
+    cursor: pointer;
+
+    text-align: center;
+
+    transition:
+        transform .15s,
+        box-shadow .15s;
+
+}
+
+
+
+.pizza-skin:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 5px 10px rgba(0,0,0,.2);
+
+}
+
+
+
+.pizza-skin.selected {
+
+    border-color: #04ef3e;
+
+    background: #f5f0d8;
+
+    box-shadow:
+        0 0 10px rgba(4,239,62,.5);
+
+}
+
+
+
+.pizza-skin img {
+
+    width: 90px;
+
+    height: 90px;
+
+    object-fit: contain;
+
+}
+
+
+
+.pizza-skin p {
+
+    margin-top: .5rem;
+
+    font-weight: bold;
+
+}
+
+
+
+/* =====================================================
+   Buttons
+===================================================== */
+
+.settings-panel button:not(#closeSettingsButton) {
+
+    width: 100%;
+
+    padding: .9rem;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background: #04ef3e;
+
+    color: #011501;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background .15s,
+        transform .15s;
+
+}
+
+
+
+.settings-panel button:not(#closeSettingsButton):hover {
+
+    background: #03c934;
+
+    transform: scale(1.02);
+
+}
+
+
+
+.settings-panel button:not(#closeSettingsButton):active {
+
+    transform: scale(.97);
+
+}
+
+
+
+/* =====================================================
+   Scrollbar
+===================================================== */
+
+.settings-panel::-webkit-scrollbar {
+
+    width: 10px;
+
+}
+
+.settings-panel::-webkit-scrollbar-track {
+
+    background: #f5a73a;
+
+}
+
+.settings-panel::-webkit-scrollbar-thumb {
+
+    background: #d17d08;
+
+    border-radius: 10px;
+
+}
+
+
+
+/* =====================================================
+   Responsive
+===================================================== */
+
+@media (max-width:650px) {
+
+    .settings-panel {
+
+        width: 100vw;
+
+    }
+
+    .settings-panel label {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+    .settings-panel input[type="range"] {
+
+        width: 100%;
+
+    }
+
+}

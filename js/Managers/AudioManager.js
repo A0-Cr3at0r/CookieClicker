@@ -32,24 +32,26 @@ export class AudioManager {
     #successSound;
 
     #backgroundMusic;
+    #normalBackgroundMusic;
     #seriousBackgroundMusic;
 
     #paySuccess;
     #payError;
 
+    #musicVolume;
+    #sfxVolume;
+    #muted;
 
 
     constructor() {
 
 
         this.#clickSound = clickSound;
-
         this.#cookSound = cookSound;
-
         this.#successSound = successSound;
 
 
-        this.#backgroundMusic =
+        this.#normalBackgroundMusic =
             backgroundMusic;
 
 
@@ -57,43 +59,49 @@ export class AudioManager {
             seriousBackgroundMusic;
 
 
-
-        this.#paySuccess =
-            paySuccess;
-
-
-        this.#payError =
-            payError;
+        this.#backgroundMusic =
+            this.#normalBackgroundMusic;
 
 
+        this.#paySuccess = paySuccess;
+        this.#payError = payError;
 
-        this.#backgroundMusic.volume = 0.2;
+        this.#musicVolume = 0.2;
+        this.#sfxVolume = 1;
+        this.#muted = false;
+
+
+        this.#backgroundMusic.volume =
+            this.#musicVolume;
+        this.#backgroundMusic.loop = true;
 
     }
 
 
 
-
     consumeGameResult(result) {
-
 
         for(const event of result.getEvents()) {
 
-
             switch(event) {
+
                 case GameEvent.CLICK:
+
                     this.#play(
                         this.#clickSound
                     );
-                    
+
                     break;
 
+
                 case GameEvent.BOOST_PURCHASED:
+
                     this.#play(
                         this.#paySuccess
                     );
 
                     break;
+
 
                 case GameEvent.PIZZA_COOKED:
 
@@ -113,7 +121,6 @@ export class AudioManager {
                     break;
 
 
-
                 case GameEvent.SUCCESS:
 
                     this.#play(
@@ -130,63 +137,167 @@ export class AudioManager {
 
 
 
-
     #play(sound) {
+
+        if(this.#muted) {
+            return;
+        }
+
 
         sound.currentTime = 0;
 
-        sound.play();
+
+        sound.play()
+        .catch(() => {});
 
     }
-
 
 
 
     playBackgroundMusic() {
 
-        this.#backgroundMusic.loop = true;
+        if(this.#muted) {
+            return;
+        }
 
-        this.#backgroundMusic.play();
+
+        if(this.#backgroundMusic.paused) {
+
+            this.#backgroundMusic
+                .play()
+                .catch(() => {});
+
+        }
 
     }
 
+
+
+    stopBackgroundMusic() {
+
+        this.#backgroundMusic.pause();
+
+    }
 
 
 
     startSeriousMode() {
 
-
-        this.#backgroundMusic.pause();
-
-
-        this.#backgroundMusic =
-            this.#seriousBackgroundMusic;
-
-
-        this.#backgroundMusic.loop = true;
-
-        this.#backgroundMusic.play();
+        this.#changeBackground(
+            this.#seriousBackgroundMusic
+        );
 
     }
-
 
 
 
     stopSeriousMode() {
 
-
-        this.#backgroundMusic.pause();
-
-
-        this.#backgroundMusic =
-            backgroundMusic;
-
-
-        this.#backgroundMusic.loop = true;
-
-        this.#backgroundMusic.play();
+        this.#changeBackground(
+            this.#normalBackgroundMusic
+        );
 
     }
 
+
+
+    #changeBackground(music) {
+
+        this.#backgroundMusic.pause();
+
+        this.#backgroundMusic.currentTime = 0;
+
+        this.#backgroundMusic = music;
+
+        this.#backgroundMusic.volume = 0.2;
+        this.#backgroundMusic.loop = true;
+
+        this.#backgroundMusic
+            .play()
+            .catch(() => {});
+
+    }
+
+    setMusicVolume(value) {
+
+        this.#musicVolume = value;
+
+
+        this.#backgroundMusic.volume =
+            value;
+
+    }
+
+
+
+
+    setSFXVolume(value) {
+
+        this.#sfxVolume = value;
+
+        this.#clickSound.volume = value;
+        this.#cookSound.volume = value;
+        this.#successSound.volume = value;
+        this.#paySuccess.volume = value;
+        this.#payError.volume = value;
+
+    }
+
+
+
+
+    mute(value) {
+
+        this.#muted = value;
+
+        this.#backgroundMusic.muted = value;
+
+        this.#clickSound.muted = value;
+        this.#cookSound.muted = value;
+        this.#successSound.muted = value;
+        this.#paySuccess.muted = value;
+        this.#payError.muted = value;
+
+    }
+
+
+
+    getState() {
+
+        return {
+
+            musicVolume:
+                this.#musicVolume,
+
+            sfxVolume:
+                this.#sfxVolume,
+
+            muted:
+                this.#muted
+
+        };
+
+    }
+
+
+
+    loadState(state) {
+
+
+        this.setMusicVolume(
+            state.musicVolume
+        );
+
+
+        this.setSFXVolume(
+            state.sfxVolume
+        );
+
+
+        this.mute(
+            state.muted
+        );
+
+    }
 
 }

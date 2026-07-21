@@ -49,8 +49,12 @@ export default class Wallet {
         this.add(pizzasSold * this.#pizzaPrice * this.#moneyMultiplier);
     }
 
-    setMoneyMultiplier(moneyMultiplier) {
-            this.#moneyMultiplier = moneyMultiplier; 
+    getMoneyMultiplier() {
+        return this.#moneyMultiplier;
+    }
+
+    setMoneyMultiplier(bonus) {
+            this.#moneyMultiplier = 1 + bonus;             
     }
 
 

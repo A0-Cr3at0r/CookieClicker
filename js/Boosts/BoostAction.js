@@ -10,7 +10,7 @@ export default class BoostActions {
         slicesAdded = 0,
         pizzaAdded = 0,
         sliceMultiplier = 1,
-        moneyMultiplier = 1
+        moneyMultiplier = 0
     ) {
         this.#click = click;
         this.#slicesAdded = slicesAdded;
@@ -122,7 +122,7 @@ export default class BoostActions {
         this.#slicesAdded = 0;
         this.#pizzaAdded = 0;
         this.#sliceMultiplier = 1;
-        this.#moneyMultiplier = 1;
+        this.#moneyMultiplier = 0;
     }
 
     //=========================
@@ -134,7 +134,7 @@ export default class BoostActions {
             this.#click === 0 &&
             this.#slicesAdded === 0 &&
             this.#pizzaAdded === 0 && 
-            this.#moneyMultiplier === 1
+            this.#moneyMultiplier === 0
         );
     }
 }

@@ -70,3 +70,47 @@
     color: #ce02ee;
     background-color: #abf3bd;
 }
+
+.side-menu a,
+.side-menu button {
+
+    display: block;
+
+    width: 100%;
+
+    padding: .5rem 0;
+
+    border: none;
+
+    background: none;
+
+    text-align: left;
+
+    text-decoration: none;
+
+    color: #111;
+
+    font-size: 1.2rem;
+
+    cursor: pointer;
+
+    transition:
+        color .15s,
+        transform .15s;
+
+}
+
+.side-menu a:hover,
+.side-menu button:hover {
+
+    color: #ce02ee;
+
+    transform: translateX(6px);
+
+}
+
+#settingsButton {
+
+    font-family: inherit;
+
+}

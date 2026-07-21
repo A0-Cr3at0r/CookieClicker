@@ -38,13 +38,13 @@ export default class ClickManager {
 
         actions.addClick(click);
 
-        console.log(actions.getSliceMultiplier(), actions.getMoneyMultiplier(), actions.getSlicesAdded(), actions.getPizzaAdded(), actions.getClick());
-
         const result =
             this.#game.applyActions(actions);
 
         this.#wallet.setMoneyMultiplier(actions.getMoneyMultiplier());
-    
+
+        this.#wallet.sell(result.getPizzasCooked());
+
         this.#updateMetrics(result);
 
 
@@ -146,10 +146,6 @@ export default class ClickManager {
 
 
     }
-
-
-
-
 
 
     #applyModifiers(actions) {

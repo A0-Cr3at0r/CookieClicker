@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/game.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/darkTheme.css">
+    <link rel="stylesheet" href="css/settings.css"> 
+
 
 
     <script type="module" src="js/main.js"></script>
@@ -20,24 +23,263 @@
 </head>
 <body>
     <header class="header">
-        <button id="menuButton">☰</button>
-        <h1>🍴🍕Pizza Clicker🍕🍴</h1>
-            <a href="assets/icons/pizzaLOGO.jpg">
-            <img src="assets/icons/pizzaLOGOWithoutBG.png" alt="Logo Pizza Clicker">
-        </a>
-    </header>
-    
-    <nav id="sideMenu" class="side-menu">
-            <button id="closeButton">&times;</button>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">Shop</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="#">Stats</a></li>
-            </ul>
-    </nav>
-    <div id="overlay" class="overlay"></div>
 
+        <button id="menuButton">☰</button>
+
+        <h1>🍴🍕Pizza Clicker🍕🍴</h1>
+
+        <a href="assets/icons/pizzaLOGO.jpg">
+            <img
+                src="assets/icons/pizzaLOGOWithoutBG.png"
+                alt="Logo Pizza Clicker">
+        </a>
+
+    </header>
+
+
+
+    <!-- ==========================
+        Main Menu
+    ========================== -->
+
+    <nav
+        id="sideMenu"
+        class="side-menu">
+
+        <button id="closeButton">
+            &times;
+        </button>
+
+        <ul>
+
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    Shop
+                </a>
+            </li>
+
+            <li>
+                <button id="settingsButton">
+                    Settings
+                </button>
+            </li>
+
+            <li>
+                <a href="#">
+                    Stats
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+    <div
+        id="overlay"
+        class="overlay">
+    </div>
+
+
+
+
+    <!-- ==========================
+        Settings Panel
+    ========================== -->
+
+    <aside
+        id="settingsPanel"
+        class="settings-panel">
+
+        <button id="closeSettingsButton">
+            &times;
+        </button>
+
+
+
+        <h2>
+            ⚙️ Settings
+        </h2>
+
+
+
+        <!-- Audio -->
+
+        <section>
+
+            <h3>
+                Audio
+            </h3>
+
+            <label>
+
+                <input
+                    id="muteAudio"
+                    type="checkbox">
+
+                Mute
+
+            </label>
+
+
+            <label>
+
+                Music Volume
+
+                <input
+                    id="musicVolume"
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="50">
+
+            </label>
+
+
+            <label>
+
+                Sound Effects
+
+                <input
+                    id="sfxVolume"
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="100">
+
+            </label>
+
+        </section>
+
+
+
+        <!-- Appearance -->
+
+        <section>
+
+            <h3>
+                Appearance
+            </h3>
+
+            <label>
+
+                <input
+                    id="darkTheme"
+                    type="checkbox">
+
+                Dark Theme
+
+            </label>
+
+        </section>
+
+
+
+        <!-- Pizza skins -->
+
+        <section>
+
+            <h3>
+                Pizza Skin
+            </h3>
+
+            <div id="pizzaSkins">
+
+                <div
+                    class="pizza-skin"
+                    data-skin="classic">
+
+                    <img
+                        src="assets/images/PizzaGame.png"
+                        alt="Classic Pizza">
+
+                    <p>Classic</p>
+
+                </div>
+
+
+
+                <div
+                    class="pizza-skin"
+                    data-skin="mexican">
+
+                    <img
+                        src="assets/images/MexicanPizza.png"
+                        alt="Mexican Pizza">
+
+                    <p>Mexican</p>
+
+                </div>
+
+
+
+                <div
+                    class="pizza-skin"
+                    data-skin="allDressed">
+
+                    <img
+                        src="assets/images/AllDressed.png"
+                        alt="AllDressed Pizza">
+
+                    <p>AllDressed Pizza</p>
+
+                </div>
+
+                <div
+                    class="pizza-skin"
+                    data-skin="goodPizza">
+
+                    <img
+                        src="assets/images/GoodPizza.png"
+                        alt="Pizza with blue face smilling">
+
+                    <p>Good Pizza</p>
+
+                </div>
+
+                <div
+                    class="pizza-skin"
+                    data-skin="ultimate">
+
+                    <img
+                        src="assets/images/UltimatePizza.png"
+                        alt="Angry Pizza with red face">
+
+                    <p>Ultimate Pizza</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- Save -->
+
+        <section>
+
+            <h3>
+                Save Data
+            </h3>
+
+            <button id="resetButton">
+                Reset Progress
+            </button>
+
+        </section>
+
+    </aside>
+
+    <div
+        id="settingsOverlay"
+        class="overlay">
+    </div>
 
     <main>
         <section class="boosts">
@@ -127,26 +369,24 @@
 
 
             <div class="metric-card active">
-                <span>Money multiplier</span>
-                <strong id="moneyMultiplier">x1</strong>
+                <span>Money Bonus</span>
+                <strong id="moneyMultiplier">0%</strong>
             </div>
-
 
         </section>
     </main>
 
 
-
     <footer class="footer">
-    <p>&copy; 2026 Pizza Clicker. All rights reserved.</p>
+        <p>&copy; 2026 Pizza Clicker. All rights reserved.</p>
 
-    <nav>
-        <a href="#">About</a>
-        <span>|</span>
-        <a href="#">Legal Notices</a>
-        <span>|</span>
-        <a href="#">Contact</a>
-    </nav>
-</footer>
+        <nav>
+            <a href="#">About</a>
+            <span>|</span>
+            <a href="#">Legal Notices</a>
+            <span>|</span>
+            <a href="#">Contact</a>
+        </nav>
+    </footer>
 </body>
 </html>

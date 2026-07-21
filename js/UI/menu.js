@@ -13,6 +13,7 @@ closeButton.addEventListener("click", () => {
     sideMenu.classList.remove("open");
 });
 
+
 overlay.addEventListener("click", () => {
     overlay.classList.remove("show");
     sideMenu.classList.remove("open");

@@ -55,36 +55,33 @@ export default class MetricUI {
 
     render(metrics) {
 
-
-        for(
-            const [name,value]
-            of Object.entries(metrics)
-        ) {
-
+        for (const [name, value] of Object.entries(metrics)) {
 
             const element =
                 this.#elements.get(name);
 
+            if (!element) {
+                continue;
+            }
 
+            if (name === "Slice Multiplier") {
 
-            if(element) {
+                element.textContent =
+                    "x" + value;
 
+            }
 
-                if(
-                    name.includes("Multiplier")
-                ) {
+            else if (name === "Money Multiplier") {
 
-                    element.textContent =
-                        "x" + value;
+                element.textContent =
+                    (100 * value).toFixed() + "%";
 
-                }
+            }
 
-                else {
+            else {
 
-                    element.textContent =
-                        this.#formatNumber(value);
-
-                }
+                element.textContent =
+                    this.#formatNumber(value);
 
             }
 

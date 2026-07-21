@@ -118,9 +118,7 @@ export default class SaveManager {
     }
 
 
-
-
-    clear() {
+    reset() {
 
         localStorage.removeItem(
             this.#saveKey
@@ -140,5 +138,6 @@ export default class SaveManager {
         );
 
     }
+
 
 }
